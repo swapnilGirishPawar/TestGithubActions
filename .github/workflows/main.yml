@@ -1,0 +1,39 @@
+name: Java Maven CI with Node.js and Appium
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install Node.js dependencies
+      run: |
+        npm install -g appium
+
+    - name: Build with Maven
+      run: mvn clean install
+
+    - name: Run Appium tests
+      run: |
+        appium
+
+  # Add additional jobs or steps as needed
