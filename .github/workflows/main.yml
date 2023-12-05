@@ -29,9 +29,17 @@ jobs:
       run: |
         npm install -g npm
 
-    - name: Install Node.js dependencies
+    - name: install Appium
       run: |
-        npm install -g appium
+        npm install -g appium@next
+    
+    - name: Appium server version check
+      run: |
+        appium -v
+
+    - name: install Appium android driver
+      run: |
+        appium driver install uiutoamtor2
 
     - name: Build with Maven
       run: mvn clean install
@@ -39,5 +47,9 @@ jobs:
     - name: Run Appium tests
       run: |
         appium
+        
+    # - name: open simulator for android/iOS
+    #   run: |
 
-  # Add additional jobs or steps as needed
+    # - name: run the command for testng.xml
+    #   run: |
