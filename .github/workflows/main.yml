@@ -25,6 +25,10 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Install npm to latest version
+      run: |
+        npm install -g npm
+
     - name: Install Node.js dependencies
       run: |
         npm install -g appium
