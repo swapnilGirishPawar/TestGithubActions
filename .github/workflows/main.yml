@@ -39,7 +39,7 @@ jobs:
 
     - name: install Appium android driver
       run: |
-        appium driver install uiutoamtor2
+        appium driver install uiautomator2
 
     - name: Build with Maven
       run: mvn clean install
